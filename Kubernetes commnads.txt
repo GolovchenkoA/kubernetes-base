@@ -214,10 +214,40 @@ kubectl logs nginx-depl-8475696677-bcrsb
 
 
 
--- Namespaces 
+============================Namespaces 
 Time: 1:47
 (4 by default)
 Namespaces is like virtual cluster inside Kubernetes cluster
+Purpose: group resources in namespaces to organize ones. 
+For example db-namespace (DB and all required resources for that) or Monitoring-namespace (everything for monitoring)
+Or grouping for blue/green deployment and have 2 namespaces for such deployment
+or namespaces for 2 different teams that work on the same kubenretes cluster
 
+Volumes and nodes live in non-namespace region. These components are global
 
 kubectl get namespace
+
+kubectl create namespace my-namespace
+
+
+--list global and namespace-specific resources
+kubectl api-resources --namespaced=false
+kubectl api-resources --namespaced=true
+
+-- apply configmap in a namespace
+kubectl apply -f some-configmap.yaml --namespace=my-namespace
+
+-- get config map in a namespace
+kubectl get configmap -n my-namespace
+
+!! it's better to add in a configmap configuration file (kind: ConfigMap) metadata with namespace:my-namespace
+
+-- set default namespace : use kubens (kubectx) tool to do that
+
+
+
+==================Ingress==========================
+It's external service
+Use it to redirect external queries inside kubernetes cluster (to internal service)
+
+kind: Ingress

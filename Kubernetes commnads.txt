@@ -1,3 +1,4 @@
+Useful resource: https://spacelift.io/blog/kubernetes-cheat-sheet
 Source: https://www.youtube.com/watch?v=X48VuDVv0do  Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]
 
 
